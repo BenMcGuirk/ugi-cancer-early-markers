@@ -14,7 +14,6 @@ Researchers with access to CPRD Aurum may use this code to reproduce the analyse
 
 The CSV file paths in the scripts point to local directories. 
 Researchers using this code should replace these paths with their own file locations. 
-The underlying data (CPRD Aurum) cannot be shared.
 
 ## License
 

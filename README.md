@@ -1,4 +1,4 @@
-# Temporal trends of blood tests and body mass index preceding upper-gastrointestinal cancer diagnosis
+# Blood tests and body mass index as early markers of upper-gastrointestinal cancer
 
 ## Introduction
 This repository contains analysis code used for the paper "Tests, comorbidities, medications and symptoms as early markers for upper gastrointestinal cancer: a longitudinal matched case control study". Temporal trends of blood tests and BMI in the five years pre UGI cancer diagnosis were analysed using joinpoint regression. Temporal associations of blood tests and BMI were analysed using fractional polynomials with up to two terms.

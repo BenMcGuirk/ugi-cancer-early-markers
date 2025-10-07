@@ -1,6 +1,6 @@
-# Analysis Code for "Temporal Associations of Early Markers of Upper Gastro-Intestinal Cancer"
+## Analysis Code for "Tests, comorbidities, medications and symptoms as early markers for upper gastrointestinal cancer: a longitudinal matched case control study"
 
-This repository contains the code used for the analyses in our Lancet Gastro manuscript.
+This repository contains the code used for the analyses in our manuscript on blood test and bmi trends.
 
 ⚠️ Note: The analysis was conducted on CPRD Aurum, a restricted dataset. The data cannot be shared. 
 The code is provided for transparency and documentation purposes only. 

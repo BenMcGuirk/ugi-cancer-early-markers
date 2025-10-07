@@ -137,16 +137,6 @@ def fit_models():
     for test in tests:
         units = BLOOD_TEST_RANGES[test]['unit']
 
-        # Call the function for proportions
-        #fit_and_plot_data(
-        #    test=test,
-        #    data_type='proportions',
-        #    plot_title_suffix='Proportion of Patients with a Test',
-        #    y_label='Proportion',
-        #    data_key='proportions',
-        #    output_filename_suffix='proportions'
-        #)
-
         # Call function for abnormal proportions
         fit_and_plot_data(
             test=test,

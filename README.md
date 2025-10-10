@@ -21,34 +21,35 @@ Patient text files are used to identify populations, and observation files are u
 Preprocessing steps differ slightly between joinpoint regression and fractional polynomials.  
 Once populations have been identified, index dates assigned and test data extracted:
 ### Joinpoint regression
-1. Global preprocessing - performed on entire dataset
+1. Global preprocessing (performed on entire dataset)
 - Remove duplicate data
 - Calculate how many months pre index the test occured (using 'obsdate' column)
 - Filter data to only include data from 1 month pre index to 61 months pre index (5 year period)*
 2. Per test preprocessing**
-- Loop over each test and extract relevant data using each test's codelist
+- Loop over each test and filter using each test's codelist
 - Remove implausible values (choose ranges with clinical guidance)
 3. Per test and group preprocessing (for each test and group)
-- Calculate mean test value in each 3 month interval
-- Calculate the proportion of patients with an abnormal result. Reference ranges provided by CPRD in 'numrangehigh' and 'numrangelow' columns, as reference ranges can vary by lab. For tests missing ref range, choose normal ranges with clinical guidance.
-Final output of preprocessing for mean test values should be a dataframe with two columns, months pre index (x-axis) and mean value (y-axis).
+- Ensure patients only have one test result per 3 month interval
+- Calculate mean test value in each 3 month interval 
+- Calculate the proportion of patients with an abnormal result. Reference ranges provided by CPRD in 'numrangehigh' and 'numrangelow' columns, as reference ranges can vary by lab. For tests missing ref range, choose normal ranges with clinical guidance.  
+Final output of preprocessing for mean test values should be a dataframe with two columns, months pre index (x-axis) and mean value (y-axis).  
 Final output of preprocessing for abnormal proportions is the same but with proportion instead of mean value for y-axis.
 
 ### Fractional polynomials
 1. Global preprocessing
-- As above, except no need to group into 3-month intervals
+- As above, except no need to group into 3 month intervals
 2. Per test preprocessing**
-- Loop over each test and extract relevant data using each test's codelist
+- Loop over each test and filter using each test's codelist
 - Remove implausible values (choose ranges with clinical guidance)
-- Add 'cancer_status' as binary variable.
+- Add 'cancer_status' as binary variable
 - For each group split data into two intervals (1 month-2 years pre diagnosis, 2-5 years pre diagnosis)
-- If a patient has multiple tests in a period, keep earliest
-- Concatenate and shuffle all combinations of case vs control comparisons e.g. pancreatic vs general controls (interval 1), oesophageal vs benign controls (interval 2) etc
-Final output of preprocessing for fractional polynomials is a dataframe for each comparison of cases and controls, and each interval, per test. Each dataframe has just two columns, value (x axis) and cancer status.
+- Ensure patients only have one test result per interval
+- Concatenate and shuffle all combinations of case vs control comparisons e.g. pancreatic vs general controls (interval 1), oesophageal vs benign controls (interval 2) etc  
+Final output of preprocessing for fractional polynomials is a dataframe for each comparison of cases and controls, and each interval, per test. Each dataframe has just two columns, value (x axis) and cancer status. Odds ratios are calculated with respect to odds at the mean test value.
 
-\* For joinpoint regression we group our data into 3 month intervals starting with 1-4 months. This means that the last interval is 58-61 months due to shifting 1 month backwards. If you have enough data, 1 month intervals may be appropriate.  
+\* For joinpoint regression we group our data into 3 month intervals starting with 1-4 months. This means that the last interval is 58-61 months due to shifting the 5-year period 1 month backwards. If you have enough data, 1 month intervals may be appropriate.  
 ** Preprocessing steps for BMI and NLR differ to the other tests:
-Extra BMI data calculated by identifying height and weight measurements taken on the same day for patients without a BMI result.
+Extra BMI data is calculated by identifying height and weight measurements taken on the same day for patients without an explicit BMI result.
 NLR data calculated using neutrophil count and lymphocyte count measurements taken on the same day for each patient.
 
 ## License

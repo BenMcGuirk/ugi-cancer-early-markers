@@ -28,8 +28,7 @@ Once populations have been identified, index dates assigned and test data extrac
 2. Per test preprocessing**
 - Loop over each test and extract relevant data using each test's codelist
 - Remove implausible values (choose ranges with clinical guidance)
-3. Per test and group preprocessing
-(For each test and group)
+3. Per test and group preprocessing (for each test and group)
 - Calculate mean test value in each 3 month interval
 - Calculate the proportion of patients with an abnormal result. Reference ranges provided by CPRD in 'numrangehigh' and 'numrangelow' columns, as reference ranges can vary by lab. For tests missing ref range, choose normal ranges with clinical guidance.
 Final output of preprocessing for mean test values should be a dataframe with two columns, months pre index (x-axis) and mean value (y-axis).

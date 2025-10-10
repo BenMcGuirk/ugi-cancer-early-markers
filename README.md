@@ -47,7 +47,7 @@ Final output of preprocessing for abnormal proportions is the same but with prop
 - Concatenate and shuffle all combinations of case vs control comparisons e.g. pancreatic vs general controls (interval 1), oesophageal vs benign controls (interval 2) etc
 Final output of preprocessing for fractional polynomials is a dataframe for each comparison of cases and controls, and each interval, per test. Each dataframe has just two columns, value (x axis) and cancer status.
 
-\* For joinpoint regression we group our data into 3 month intervals starting with 1-4 months. This means that the last interval is 58-61 months due to shifting 1 month backwards. If you have enough data, 1 month intervals may be appropriate.
+\* For joinpoint regression we group our data into 3 month intervals starting with 1-4 months. This means that the last interval is 58-61 months due to shifting 1 month backwards. If you have enough data, 1 month intervals may be appropriate.  
 ** Preprocessing steps for BMI and NLR differ to the other tests:
 Extra BMI data calculated by identifying height and weight measurements taken on the same day for patients without a BMI result.
 NLR data calculated using neutrophil count and lymphocyte count measurements taken on the same day for each patient.

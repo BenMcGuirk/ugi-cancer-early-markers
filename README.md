@@ -18,7 +18,7 @@ Researchers using this code should replace these paths with their own file locat
 CPRD raw data consists of flat text files.
 Patient text files are used to identify populations, and observation files are used to identify medical events.
 
-Preprocessing steps differ slightly between joinpoint regression and fractional polynomials
+Preprocessing steps differ slightly between joinpoint regression and fractional polynomials.  
 Once populations have been identified, index dates assigned and test data extracted:
 ### Joinpoint regression
 1. Global preprocessing - performed on entire dataset

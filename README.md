@@ -9,11 +9,48 @@ Fractional polynomials were built using the "mfp" R package: https://cran.r-proj
 
 ## Usage
 ⚠️ Note: The analysis was conducted on CPRD Aurum, a restricted dataset. The data cannot be shared.
-The code is provided for transparency and documentation purposes only. 
-Researchers with access to CPRD Aurum may use this code to reproduce the analyses.
+The code is provided for transparency and documentation purposes, however, researchers with access to CPRD Aurum may use this code to reproduce the analyses, with preprocessing steps outlined below.
 
 The CSV file paths in the scripts point to local directories. 
-Researchers using this code should replace these paths with their own file locations. 
+Researchers using this code should replace these paths with their own file locations.
+
+## Preprocessing
+CPRD raw data consists of flat text files.
+Patient text files are used to identify populations, and observation files are used to identify medical events.
+
+Preprocessing steps differ slightly between joinpoint regression and fractional polynomials
+Once populations have been identified, index dates assigned and test data extracted:
+### Joinpoint regression
+1. Global preprocessing - performed on entire dataset
+- Remove duplicate data
+- Calculate how many months pre index the test occured (using 'obsdate' column)
+- Filter data to only include data from 1 month pre index to 61 months pre index (5 year period)*
+2. Per test preprocessing**
+- Loop over each test and extract relevant data using each test's codelist
+- Remove implausible values (choose ranges with clinical guidance)
+3. Per test and group preprocessing
+(For each test and group)
+- Calculate mean test value in each 3 month interval
+- Calculate the proportion of patients with an abnormal result. Reference ranges provided by CPRD in 'numrangehigh' and 'numrangelow' columns, as reference ranges can vary by lab. For tests missing ref range, choose normal ranges with clinical guidance.
+Final output of preprocessing for mean test values should be a dataframe with two columns, months pre index (x-axis) and mean value (y-axis).
+Final output of preprocessing for abnormal proportions is the same but with proportion instead of mean value for y-axis.
+
+### Fractional polynomials
+1. Global preprocessing
+- As above, except no need to group into 3-month intervals
+2. Per test preprocessing**
+- Loop over each test and extract relevant data using each test's codelist
+- Remove implausible values (choose ranges with clinical guidance)
+- Add 'cancer_status' as binary variable.
+- For each group split data into two intervals (1 month-2 years pre diagnosis, 2-5 years pre diagnosis)
+- If a patient has multiple tests in a period, keep earliest
+- Concatenate and shuffle all combinations of case vs control comparisons e.g. pancreatic vs general controls (interval 1), oesophageal vs benign controls (interval 2) etc
+Final output of preprocessing for fractional polynomials is a dataframe for each comparison of cases and controls, and each interval, per test. Each dataframe has just two columns, value (x axis) and cancer status.
+
+* For joinpoint regression we group our data into 3 month intervals starting with 1-4 months. This means that the last interval is 58-61 months due to shifting 1 month backwards. If you have enough data, 1 month intervals may be appropriate.
+** Preprocessing steps for BMI and NLR differ to the other tests:
+Extra BMI data calculated by identifying height and weight measurements taken on the same day for patients without a BMI result.
+NLR data calculated using neutrophil count and lymphocyte count measurements taken on the same day for each patient.
 
 ## License
 

@@ -1,6 +1,8 @@
 # Blood tests and body mass index as early markers of upper-gastrointestinal cancer
 [![python](https://img.shields.io/badge/python-3.12.6-blue)](https://www.python.org)
 [![R](https://img.shields.io/badge/R-4.5.1-blue)](https://www.r-project.org/)
+[![piecewise_regression](https://img.shields.io/badge/piecewise_regression-1.5.0-blue)](https://piecewise-regression.readthedocs.io/en/latest/)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/BenMcGuirk/ugi-cancer-early-markers/blob/main/LICENSE)
 
 ## Introduction
 This repository contains analysis code used for the paper "Tests, comorbidities, medications and symptoms as early markers for upper gastrointestinal cancer: a longitudinal matched case control study". Temporal trends of blood tests and BMI in the five years pre UGI cancer diagnosis were analysed using joinpoint regression. Temporal associations of blood tests and BMI were analysed using fractional polynomials with up to two terms.

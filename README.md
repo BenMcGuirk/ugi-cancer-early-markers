@@ -2,6 +2,7 @@
 [![python](https://img.shields.io/badge/python-3.12.6-blue)](https://www.python.org)
 [![R](https://img.shields.io/badge/R-4.5.1-blue)](https://www.r-project.org/)
 [![piecewise_regression](https://img.shields.io/badge/piecewise_regression-1.5.0-blue)](https://piecewise-regression.readthedocs.io/en/latest/)
+[![mfp](https://img.shields.io/badge/mfp-1.5.5.1-blue)](https://cran.r-project.org/web/packages/mfp/index.html)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/BenMcGuirk/ugi-cancer-early-markers/blob/main/LICENSE)
 
 ## Introduction
